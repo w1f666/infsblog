@@ -1,5 +1,5 @@
 ---
-import { NAV_LINKS, SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { NAV_LINKS, SITE_AUTHOR, SITE_DESCRIPTION, SITE_EMAIL, SITE_GITHUB, SITE_TITLE } from '../consts';
 
 const today = new Date();
 ---
@@ -15,6 +15,10 @@ const today = new Date();
 				<a href={link.href}>{link.label}</a>
 			))}
 			<a href="/rss.xml">RSS</a>
+		</div>
+		<div class="footer-contact" aria-label="联系方式">
+			<a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
+			<a href={SITE_GITHUB} target="_blank" rel="noreferrer">GitHub / w1f666</a>
 		</div>
 		<p class="footer-meta">© {today.getFullYear()} {SITE_AUTHOR}. Built with Astro.</p>
 	</div>
@@ -52,15 +56,32 @@ const today = new Date();
 		gap: 12px;
 		margin: 20px 0 0;
 	}
+	.footer-contact {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin: 16px 0 0;
+	}
 	.footer-nav a {
 		padding: 0.72rem 1rem;
 		border-radius: 999px;
 		background: var(--surface-strong);
+		border: 1px solid transparent;
 		text-decoration: none;
 		color: var(--ink);
 	}
 	.footer-nav a:hover {
 		background: rgba(161, 98, 7, 0.14);
+		border-color: rgba(180, 83, 9, 0.18);
+		transform: translateY(-1px);
+		box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
+	}
+	.footer-contact a {
+		color: var(--muted);
+		text-decoration: none;
+	}
+	.footer-contact a:hover {
+		color: var(--accent-strong);
 	}
 	@media (max-width: 720px) {
 		.footer-shell {

@@ -1,43 +1,34 @@
 ---
-title: '为个人博客建立一套耐看的视觉系统'
-description: '比起堆效果，真正拉开完成度的是版式、层次、色彩与留白之间的稳定关系。'
+title: '技术博客的界面，不该让视觉抢走正文'
+description: '前端博客的视觉系统应该服务于阅读和检索，而不是把注意力从标题、摘要和正文上带走。'
 pubDate: 'Apr 05 2026'
 tags: ['设计系统', '视觉', '排版']
 featured: false
 heroImage: '../../assets/blog-placeholder-2.jpg'
 ---
 
-博客站很容易陷入两个极端：一种是完全像文档站，功能齐但情绪很弱；另一种是为了“设计感”堆太多视觉元素，结果真正的阅读体验变差。
+技术博客很容易滑向两个极端：一种是过于像文档站，结构对了但缺少辨识度；另一种是为了显得“有设计感”加太多视觉效果，结果正文反而被削弱了。
 
-我更倾向于做第三种：阅读优先，但有明确审美判断。
+我更倾向于第三种做法：阅读优先，但视觉上依然有明确判断。
 
-## 先决定气质，再决定颜色
+## 先决定信息密度，再决定风格表达
 
-如果没有一句话能描述站点的视觉方向，那颜色很容易越调越乱。这个站点的目标很明确：温和、可靠、适合长文阅读。
+对于博客来说，真正先要确定的是用户进入页面后第一眼应该看到什么。是大片装饰、封面图，还是标题、摘要和时间信息？这个顺序一旦确定，视觉决策会简单很多。
 
-所以我用了偏暖的底色，再用偏棕橙色做强调。这种配色不会像冷白背景那样生硬，也不会像高饱和品牌色那样分散阅读注意力。
+这个站点最后选择了较轻的底色和有限的强调色，让页面先有层次，再保留一点识别度，而不是靠大面积强对比制造存在感。
 
-## 排版要让标题和正文分工明确
+## 列表页应该更像目录，而不是画廊
 
-正文适合稳定、可长时间阅读的字体；标题则可以更有一点个性。两者分工越清楚，页面层级越自然。
+对技术博客来说，列表页更像一个索引系统。用户在这里最关心的是标题是否准确、摘要是否有信息量、标签是否能表达主题，所以列表页不一定需要依赖图片。
 
-这里我保留了 Astro 模板已有的 Atkinson 字体作为正文基底，再给标题使用更偏衬线气质的字体栈。这样既保留可读性，也让首页和文章页更像一份认真经营的出版物。
+当一行一篇文章的结构足够清楚时，浏览效率会明显高于图文卡片式列表。
 
-## 卡片不是为了“组件感”，而是为了组织信息
+## 标题和正文必须各司其职
 
-首页、列表页和关于页我都使用了较轻的卡片表面。这个选择不是因为“现在流行卡片”，而是它能带来两个好处：
+正文应该稳定、连续、适合长时间阅读；标题则负责建立层级和节奏。两者分工越明确，文章越容易读下去。
 
-- 让不同信息块的边界更清楚
-- 在较浅的背景上增加层次，而不依赖重阴影
+这也是为什么我会持续压低首页大标题和说明文字的尺度。技术博客的首屏不需要像个人介绍页那样强行建立情绪，它更应该像一个清晰的入口。
 
-视觉系统里最重要的从来不是某个单独元素，而是元素之间的关系是否稳定。
+## 视觉系统最重要的是稳定
 
-## 留白不是浪费空间
-
-很多模板会把内容一股脑塞满屏幕，结果首屏信息很多，但真正重要的东西并没有更突出。适当的留白可以让用户更快找到导航、标题、摘要和关键操作。
-
-尤其是在博客首页，少一点拥挤，通常比多一点功能更有价值。
-
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
-
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+真正决定完成度的，不是某一个单独元素是否好看，而是页面里的标题、摘要、标签、按钮和正文之间是否始终保持相似的节奏。如果这些关系稳定，技术博客自然会显得更成熟。

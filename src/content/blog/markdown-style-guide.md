@@ -1,17 +1,19 @@
 ---
-title: '这份博客支持哪些写作语法'
-description: '用一篇真实示例说明当前博客已经支持的 Markdown 能力，方便后续直接写作。'
+title: '前端技术博客的 Markdown 写作规范'
+description: '整理这份博客里最常用的 Markdown 写法，保证技术文章在结构、代码和说明方式上保持一致。'
 pubDate: 'Apr 02 2026'
 tags: ['Markdown', '写作', '内容工作流']
 featured: false
 heroImage: '../../assets/blog-placeholder-1.jpg'
 ---
 
-这篇文章不是占位内容，而是一份可以长期保留的写作参考。以后你在这个博客里写文时，可以直接对照它确认当前支持的语法形式。
+技术博客写久了之后，真正耗时的往往不是内容本身，而是每篇文章在结构上的摇摆。标题怎么写，代码块怎么放，表格和引用怎么组织，如果每次都重新决定，写作成本会被放大很多。
 
-## 标题层级
+所以我更倾向于给博客保留一份明确的 Markdown 写作规范。它不是为了限制表达，而是为了让技术文章在排版和阅读节奏上保持稳定。
 
-建议每篇文章只保留一个一级标题，也就是 frontmatter 里的 `title`。正文从二级标题开始组织最稳妥。
+## 标题层级尽量收敛
+
+每篇文章只保留一个一级标题，也就是 frontmatter 里的 `title`。正文从二级标题开始展开，通常是最稳妥的做法。这样目录更清楚，页面层级也不会显得杂乱。
 
 ## 二级标题
 
@@ -19,13 +21,13 @@ heroImage: '../../assets/blog-placeholder-1.jpg'
 
 #### 四级标题
 
-## 段落与强调
+## 段落与强调要克制
 
-普通段落直接书写即可。你也可以在文中使用 **加粗**、_斜体_、`行内代码` 来强调重点，但最好克制使用。
+普通段落直接书写即可。你也可以在文中使用 **加粗**、_斜体_、`行内代码` 强调重点，但不建议为了“看起来有层次”而频繁叠加样式。
 
-## 图片
+## 图片应该服务于说明
 
-如果你希望在文章里插图，直接使用标准 Markdown 图片语法即可。
+如果一张图不能帮助读者理解结构、流程或差异，那它在技术博客里通常就不是必要内容。需要插图时，直接使用标准 Markdown 语法即可。
 
 ```markdown
 ![图片说明](../../assets/blog-placeholder-about.jpg)
@@ -33,13 +35,13 @@ heroImage: '../../assets/blog-placeholder-1.jpg'
 
 ![博客图片示例](../../assets/blog-placeholder-about.jpg)
 
-## 引用
+## 引用适合保留结论和原话
 
 适合在观点文章里引用资料、原话或结论摘要。
 
 > 不要把博客理解成信息堆栈，它更像是一个持续公开的思考索引。
 
-## 表格
+## 表格适合做对比
 
 表格适合放一些简洁的对比信息，例如技术选型、维护成本或内容形式区别。
 
@@ -49,7 +51,7 @@ heroImage: '../../assets/blog-placeholder-1.jpg'
 | MDX | 需要混合组件或复杂内容块 | 中 |
 | 纯 HTML | 少量特殊排版补充 | 低 |
 
-## 代码块
+## 代码块只放必要上下文
 
 代码块已经带有统一的深色背景样式，适合写配置和示例代码。
 
@@ -61,7 +63,7 @@ const post = {
 };
 ```
 
-## 列表
+## 列表用于收束信息
 
 你可以正常使用有序列表和无序列表：
 
@@ -73,150 +75,12 @@ const post = {
 - 摘要要尽量具体
 - 标签最好能长期复用
 
-## 额外的内联元素
+## 额外内联元素按需使用
 
 <abbr title="Graphics Interchange Format">GIF</abbr> 这样的缩写说明也能正常显示。
 
 H<sub>2</sub>O 和 X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup> 这类上下标同样支持。
 
-## 推荐写法
+## 推荐原则
 
-如果你只是写长文、教程和笔记，那么 Markdown 已经足够；如果你要在文章里嵌入定制组件、复杂说明块或后续的 React 交互模块，再考虑 MDX 会更合适。
-
-## Tables
-
-### Syntax
-
-```markdown
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
-```
-
-### Output
-
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
-
-## Code Blocks
-
-### Syntax
-
-we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntax, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
-
-````markdown
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
-</html>
-```
-````
-
-### Output
-
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
-</html>
-```
-
-## List Types
-
-### Ordered List
-
-#### Syntax
-
-```markdown
-1. First item
-2. Second item
-3. Third item
-```
-
-#### Output
-
-1. First item
-2. Second item
-3. Third item
-
-### Unordered List
-
-#### Syntax
-
-```markdown
-- List item
-- Another item
-- And another item
-```
-
-#### Output
-
-- List item
-- Another item
-- And another item
-
-### Nested list
-
-#### Syntax
-
-```markdown
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
-```
-
-#### Output
-
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
-
-## Other Elements — abbr, sub, sup, kbd, mark
-
-### Syntax
-
-```markdown
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
-
-H<sub>2</sub>O
-
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
-
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
-
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
-```
-
-### Output
-
-<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
-
-H<sub>2</sub>O
-
-X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
-
-Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Delete</kbd> to end the session.
-
-Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
+如果一篇文章主要由文字、代码、表格和少量引用构成，那么 Markdown 已经足够。只有当你确实需要可复用的复杂内容块时，再考虑引入 MDX，会更符合技术博客的写作节奏。

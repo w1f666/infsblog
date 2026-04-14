@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
+import { getTagHref } from '../utils/tags';
 
 interface Props {
 	post: CollectionEntry<'blog'>;
@@ -13,15 +13,6 @@ const { post, variant = 'compact' } = Astro.props;
 
 <article class:list={['post-card', variant]}>
 	<a class="post-link" href={`/blog/${post.id}/`}>
-		{post.data.heroImage && (
-			<Image
-				class="post-image"
-				width={variant === 'feature' ? 1200 : 720}
-				height={variant === 'feature' ? 720 : 480}
-				src={post.data.heroImage}
-				alt=""
-			/>
-		)}
 		<div class="post-body">
 			<div class="post-meta-row">
 				<span class="post-date"><FormattedDate date={post.data.pubDate} /></span>
@@ -31,9 +22,14 @@ const { post, variant = 'compact' } = Astro.props;
 			<p>{post.data.description}</p>
 			{post.data.tags.length > 0 && (
 				<ul class="post-tags" aria-label="文章标签">
-					{post.data.tags.map((tag) => <li>{tag}</li>)}
+					{post.data.tags.map((tag) => (
+						<li>
+							<a href={getTagHref(tag)}>{tag}</a>
+						</li>
+					))}
 				</ul>
 			)}
+			<span class="post-more">阅读全文</span>
 		</div>
 	</a>
 </article>

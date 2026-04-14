@@ -1,12 +1,12 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import MainLayout from './MainLayout.astro';
+import { getTagHref } from '../utils/tags';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [] } = Astro.props;
 ---
 
 <MainLayout title={title} description={description} pageClass="article-page">
@@ -23,15 +23,14 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro
 			<p class="article-description">{description}</p>
 			{tags.length > 0 && (
 				<ul class="article-tags" aria-label="文章标签">
-					{tags.map((tag) => <li>{tag}</li>)}
+					{tags.map((tag) => (
+						<li>
+							<a href={getTagHref(tag)}>{tag}</a>
+						</li>
+					))}
 				</ul>
 			)}
 		</div>
-		{heroImage && (
-			<div class="article-hero">
-				<Image width={1280} height={720} src={heroImage} alt="" />
-			</div>
-		)}
 		<div class="prose card-surface">
 			<slot />
 		</div>

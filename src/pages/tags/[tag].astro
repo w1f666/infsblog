@@ -1,0 +1,40 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ArticleCard from '../../components/ArticleCard.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getTagMap, getTagSlug } from '../../utils/tags';
+
+interface Props {
+	tag: string;
+	posts: CollectionEntry<'blog'>[];
+}
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	const tags = getTagMap(posts);
+
+	return tags.map((item) => ({
+		params: { tag: getTagSlug(item.tag) },
+		props: { tag: item.tag, posts: item.posts },
+	}));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<MainLayout title={`${tag} | ${SITE_TITLE}`} description={SITE_DESCRIPTION} pageClass="tag-detail-page">
+	<section class="section-block compact-top">
+		<div class="section-head">
+			<div>
+				<p class="eyebrow">标签筛选</p>
+				<h1>{tag}</h1>
+				<p class="section-intro">当前标签下共有 {posts.length} 篇文章，按发布时间倒序展示。</p>
+			</div>
+			<a class="section-link" href="/tags">查看全部标签</a>
+		</div>
+		<div class="post-list">
+			{posts.map((post) => <ArticleCard post={post} />)}
+		</div>
+	</section>
+</MainLayout>

@@ -39,12 +39,14 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: var(--ink);
-	font-size: 18px;
-	line-height: 1.7;
+	font-size: 16px;
+	line-height: 1.72;
 }
 
 a {
 	color: inherit;
+	transition: color 180ms ease, transform 180ms ease, background-color 180ms ease, border-color 180ms ease,
+		box-shadow 180ms ease, opacity 180ms ease;
 }
 
 a:hover {
@@ -71,15 +73,15 @@ h6 {
 }
 
 h1 {
-	font-size: clamp(2.8rem, 6vw, 5.2rem);
+	font-size: clamp(1.95rem, 4vw, 3.45rem);
 }
 
 h2 {
-	font-size: clamp(2rem, 4vw, 3rem);
+	font-size: clamp(1.45rem, 2.5vw, 2.2rem);
 }
 
 h3 {
-	font-size: clamp(1.3rem, 2vw, 1.7rem);
+	font-size: clamp(1.05rem, 1.4vw, 1.3rem);
 }
 
 strong,
@@ -198,7 +200,8 @@ li + li {
 
 .hero-grid,
 .grid-2,
-.grid-3 {
+.grid-3,
+.post-list {
 	display: grid;
 	gap: 24px;
 }
@@ -217,12 +220,16 @@ li + li {
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.post-list {
+	grid-template-columns: 1fr;
+	gap: 16px;
+}
+
 .hero-panel,
 .info-card,
 .post-card,
 .article-header,
-.prose,
-.article-hero {
+.prose {
 	overflow: hidden;
 }
 
@@ -237,7 +244,7 @@ li + li {
 
 .eyebrow {
 	margin-bottom: 12px;
-	font-size: 0.84rem;
+	font-size: 0.78rem;
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
@@ -247,8 +254,33 @@ li + li {
 .hero-text,
 .section-intro,
 .compact-text {
-	font-size: 1.02rem;
+	font-size: 0.94rem;
 	color: var(--ink-soft);
+}
+
+.contact-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 16px;
+}
+
+.contact-list a {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.56rem 0.84rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.56);
+	border: 1px solid rgba(30, 41, 59, 0.08);
+	text-decoration: none;
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+}
+
+.contact-list a:hover {
+	border-color: rgba(180, 83, 9, 0.2);
+	color: var(--accent-strong);
+	box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
 }
 
 .hero-actions {
@@ -266,7 +298,8 @@ li + li {
 	border-radius: 999px;
 	text-decoration: none;
 	font-weight: 700;
-	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease,
+		color 180ms ease;
 }
 
 .button:hover,
@@ -279,13 +312,25 @@ li + li {
 	background: linear-gradient(135deg, var(--accent), var(--accent-strong));
 	color: white;
 	box-shadow: 0 14px 28px rgba(180, 83, 9, 0.18);
-	}
+}
+
+.button-primary:hover {
+	color: white;
+	box-shadow: 0 18px 34px rgba(180, 83, 9, 0.24);
+}
 
 .button-secondary,
 .section-link {
 	background: var(--surface-strong);
 	color: var(--ink);
 	border: 1px solid var(--border);
+}
+
+.button-secondary:hover,
+.section-link:hover,
+.back-link:hover {
+	border-color: rgba(180, 83, 9, 0.25);
+	box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
 .hero-stats,
@@ -309,6 +354,14 @@ li + li {
 	border-radius: 20px;
 	background: rgba(255, 255, 255, 0.55);
 	border: 1px solid rgba(30, 41, 59, 0.06);
+	transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+	will-change: transform;
+}
+
+.hero-stats li:hover {
+	transform: translateY(-2px);
+	border-color: rgba(180, 83, 9, 0.18);
+	box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
 }
 
 .hero-stats strong,
@@ -328,18 +381,43 @@ li + li {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
+	align-items: center;
 }
 
 .topic-list li,
 .post-tags li,
 .article-tags li,
 .post-flag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	padding: 0.42rem 0.72rem;
 	border-radius: 999px;
 	background: var(--accent-soft);
 	color: var(--accent-strong);
 	font-size: 0.86rem;
 	font-weight: 700;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.post-tags li a,
+.article-tags li a {
+	color: inherit;
+	text-decoration: none;
+	line-height: 1;
+}
+
+.post-tags li:hover,
+.article-tags li:hover,
+.topic-list li:hover {
+	background: var(--accent-soft-strong);
+}
+
+.topic-list li,
+.post-tags li,
+.article-tags li {
+	margin-top: 0;
 }
 
 .section-block {
@@ -363,6 +441,38 @@ li + li {
 	border-radius: 999px;
 	text-decoration: none;
 	font-weight: 600;
+	font-size: 0.92rem;
+}
+
+.tag-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.tag-card {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 22px 24px;
+	text-decoration: none;
+	color: inherit;
+}
+
+.tag-card strong {
+	font-size: 1.02rem;
+	color: var(--ink);
+}
+
+.tag-card span {
+	font-size: 0.9rem;
+	color: var(--muted);
+}
+
+.tag-card:hover {
+	transform: translateY(-3px);
+	border-color: rgba(180, 83, 9, 0.18);
+	box-shadow: 0 18px 34px rgba(15, 23, 42, 0.08);
 }
 
 .post-card {
@@ -370,12 +480,20 @@ li + li {
 	background: var(--surface);
 	border: 1px solid var(--border);
 	box-shadow: var(--shadow);
-	transition: transform 180ms ease, box-shadow 180ms ease;
+	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
+	will-change: transform;
+}
+
+.post-card.feature {
+	border-color: rgba(180, 83, 9, 0.18);
+	background: linear-gradient(180deg, rgba(180, 83, 9, 0.08), rgba(255, 252, 247, 0.84));
 }
 
 .post-card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(180, 83, 9, 0.2);
 	box-shadow: 0 24px 44px rgba(15, 23, 42, 0.12);
-	}
+}
 
 .post-link {
 	display: block;
@@ -383,19 +501,8 @@ li + li {
 	color: inherit;
 }
 
-.post-image {
-	width: 100%;
-	aspect-ratio: 16 / 10;
-	object-fit: cover;
-	border-radius: 0;
-}
-
-.post-card.feature .post-image {
-	aspect-ratio: 16 / 8;
-}
-
 .post-body {
-	padding: 22px;
+	padding: 22px 24px;
 }
 
 .post-meta-row,
@@ -410,11 +517,12 @@ li + li {
 
 .post-body h3 {
 	margin-top: 12px;
-	font-size: clamp(1.35rem, 2vw, 2rem);
+	font-size: clamp(1.08rem, 1.45vw, 1.4rem);
 }
 
 .post-body p {
 	margin-top: 10px;
+	max-width: 72ch;
 }
 
 .post-tags,
@@ -422,7 +530,22 @@ li + li {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
+	align-items: center;
 	margin-top: 18px;
+}
+
+.post-more {
+	display: inline-flex;
+	align-items: center;
+	margin-top: 18px;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: var(--accent-strong);
+	transition: transform 180ms ease, color 180ms ease;
+}
+
+.post-link:hover .post-more {
+	transform: translateX(4px);
 }
 
 .article-shell {
@@ -432,6 +555,7 @@ li + li {
 
 .back-link {
 	display: inline-flex;
+	align-items: center;
 	margin-bottom: 16px;
 	padding: 0.7rem 1rem;
 	border-radius: 999px;
@@ -443,32 +567,20 @@ li + li {
 }
 
 .article-header h1 {
-	font-size: clamp(2.6rem, 5vw, 4.2rem);
+	font-size: clamp(1.8rem, 3.8vw, 2.85rem);
 	margin-top: 16px;
 }
 
 .article-description {
 	margin-top: 16px;
-	font-size: 1.08rem;
+	font-size: 0.95rem;
 }
-
-.article-hero {
-	margin-top: 20px;
-	border-radius: var(--radius-lg);
-	box-shadow: var(--shadow);
-}
-
-.article-hero img {
-	display: block;
-	width: 100%;
-	height: auto;
-	border-radius: inherit;
-	}
 
 .prose {
 	width: min(var(--reading-width), 100%);
 	margin: 20px auto 0;
 	padding: 32px;
+	font-size: 0.96rem;
 }
 
 .prose > :first-child {
@@ -484,6 +596,33 @@ li + li {
 	margin-top: 1.2rem;
 }
 
+
+.card-surface,
+.info-card,
+.tone-accent,
+.tone-warm,
+.article-header,
+.prose,
+.footer-shell {
+	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+.info-card:hover,
+.tone-accent:hover,
+.tone-warm:hover,
+.article-header:hover,
+.prose:hover,
+.footer-shell:hover {
+	border-color: rgba(180, 83, 9, 0.16);
+	box-shadow: 0 22px 44px rgba(15, 23, 42, 0.1);
+}
+
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid rgba(180, 83, 9, 0.45);
+	outline-offset: 3px;
+	border-radius: 12px;
+}
 .prose h2,
 .prose h3,
 .prose h4 {
@@ -525,6 +664,7 @@ li + li {
 	.hero-grid,
 	.grid-2,
 	.grid-3,
+	.tag-grid,
 	.hero-stats {
 		grid-template-columns: 1fr;
 	}
@@ -537,7 +677,7 @@ li + li {
 
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 16px;
 	}
 	main {
 		width: min(var(--content-width), calc(100% - 20px));
@@ -552,8 +692,16 @@ li + li {
 		padding: 22px;
 	}
 	.card-surface,
-	.post-card,
-	.article-hero {
+	.post-card {
 		border-radius: 24px;
+	}
+	h1 {
+		font-size: clamp(1.8rem, 8vw, 2.35rem);
+	}
+	h2 {
+		font-size: clamp(1.32rem, 5vw, 1.72rem);
+	}
+	.article-header h1 {
+		font-size: clamp(1.62rem, 7vw, 2.1rem);
 	}
 }

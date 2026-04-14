@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getTagHref, getTagMap } from '../../utils/tags';
+
+const posts = await getCollection('blog');
+const tags = getTagMap(posts);
+---
+
+<MainLayout title={`标签 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} pageClass="tags-page">
+	<section class="section-block compact-top">
+		<div class="section-head">
+			<div>
+				<p class="eyebrow">标签总览</p>
+				<h1>按主题浏览</h1>
+				<p class="section-intro">把文章按主题聚合后，更适合从某个具体方向开始阅读。</p>
+			</div>
+		</div>
+		<div class="tag-grid">
+			{tags.map((item) => (
+				<a class="tag-card card-surface" href={getTagHref(item.tag)}>
+					<strong>{item.tag}</strong>
+					<span>{item.count} 篇文章</span>
+				</a>
+			))}
+		</div>
+	</section>
+</MainLayout>

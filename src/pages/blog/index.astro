@@ -25,7 +25,7 @@ const remainingPosts = posts.filter((post) => post.id !== featuredPost?.id);
 	</section>
 
 	<section class="section-block compact-top">
-		<div class="grid-2">
+		<div class="post-list">
 			{remainingPosts.map((post) => <ArticleCard post={post} />)}
 		</div>
 	</section>
