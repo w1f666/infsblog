@@ -1,0 +1,71 @@
+---
+import { NAV_LINKS, SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const today = new Date();
+---
+
+<footer>
+	<div class="footer-shell">
+		<div>
+			<p class="footer-title">{SITE_TITLE}</p>
+			<p class="footer-copy">{SITE_DESCRIPTION}</p>
+		</div>
+		<div class="footer-nav" aria-label="页脚导航">
+			{NAV_LINKS.map((link) => (
+				<a href={link.href}>{link.label}</a>
+			))}
+			<a href="/rss.xml">RSS</a>
+		</div>
+		<p class="footer-meta">© {today.getFullYear()} {SITE_AUTHOR}. Built with Astro.</p>
+	</div>
+</footer>
+<style>
+	footer {
+		padding: 32px 0 56px;
+	}
+	.footer-shell {
+		width: min(1120px, calc(100% - 32px));
+		margin: 0 auto;
+		padding: 32px;
+		border-radius: 32px;
+		background: rgba(255, 255, 255, 0.55);
+		border: 1px solid rgba(30, 41, 59, 0.08);
+		box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+	}
+	.footer-title,
+	.footer-copy,
+	.footer-meta {
+		margin: 0;
+	}
+	.footer-title {
+		font-size: 1.1rem;
+		font-weight: 700;
+	}
+	.footer-copy,
+	.footer-meta {
+		margin-top: 8px;
+		color: var(--muted);
+	}
+	.footer-nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin: 20px 0 0;
+	}
+	.footer-nav a {
+		padding: 0.72rem 1rem;
+		border-radius: 999px;
+		background: var(--surface-strong);
+		text-decoration: none;
+		color: var(--ink);
+	}
+	.footer-nav a:hover {
+		background: rgba(161, 98, 7, 0.14);
+	}
+	@media (max-width: 720px) {
+		.footer-shell {
+			padding: 24px;
+			border-radius: 24px;
+		}
+	}
+</style>

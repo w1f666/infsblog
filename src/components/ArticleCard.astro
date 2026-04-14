@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	variant?: 'feature' | 'compact';
+}
+
+const { post, variant = 'compact' } = Astro.props;
+---
+
+<article class:list={['post-card', variant]}>
+	<a class="post-link" href={`/blog/${post.id}/`}>
+		{post.data.heroImage && (
+			<Image
+				class="post-image"
+				width={variant === 'feature' ? 1200 : 720}
+				height={variant === 'feature' ? 720 : 480}
+				src={post.data.heroImage}
+				alt=""
+			/>
+		)}
+		<div class="post-body">
+			<div class="post-meta-row">
+				<span class="post-date"><FormattedDate date={post.data.pubDate} /></span>
+				{post.data.featured && <span class="post-flag">精选</span>}
+			</div>
+			<h3>{post.data.title}</h3>
+			<p>{post.data.description}</p>
+			{post.data.tags.length > 0 && (
+				<ul class="post-tags" aria-label="文章标签">
+					{post.data.tags.map((tag) => <li>{tag}</li>)}
+				</ul>
+			)}
+		</div>
+	</a>
+</article>

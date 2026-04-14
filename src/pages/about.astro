@@ -1,0 +1,61 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<MainLayout title={`关于 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} pageClass="about-page">
+	<section class="hero-grid compact-hero">
+		<div class="card-surface hero-panel">
+			<p class="eyebrow">关于站点</p>
+			<h1>{SITE_TITLE} 是一个为长期写作准备的 Astro 博客骨架。</h1>
+			<p class="hero-text">
+				这个版本保留了 Astro 在内容发布上的轻量优势，同时把默认 starter 补齐成了更适合真实使用的首页、文章列表、文章详情和关于页。
+			</p>
+		</div>
+		<div class="card-surface tone-accent">
+			<p class="eyebrow">作者</p>
+			<h2 class="about-name">{SITE_AUTHOR}</h2>
+			<p class="compact-text">关注产品体验、前端系统、设计表达与稳定的内容生产流程。</p>
+		</div>
+	</section>
+
+	<section class="section-block compact-top">
+		<div class="grid-2">
+			<div class="card-surface info-card">
+				<h2>我为什么保留静态优先</h2>
+				<p>
+					对个人博客来说，真正重要的是内容管理、页面加载、搜索引擎可见性和后续维护成本。Astro 在这些维度上很稳，所以我先把静态结构打磨好。
+				</p>
+			</div>
+			<div class="card-surface info-card">
+				<h2>什么时候会接 React</h2>
+				<p>
+					如果后续要做站内搜索、文章筛选、阅读进度同步、评论系统这类复杂交互，我会按模块引入 React，而不是把整站提前做成重前端应用。
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-block compact-top">
+		<div class="section-head">
+			<div>
+				<p class="eyebrow">内容范围</p>
+				<h2>这个站会写什么</h2>
+			</div>
+		</div>
+		<div class="grid-3">
+			<div class="card-surface info-card">
+				<h3>设计与视觉</h3>
+				<p>梳理页面层级、信息布局、组件语义和可持续的风格选择。</p>
+			</div>
+			<div class="card-surface info-card">
+				<h3>前端工程</h3>
+				<p>记录 Astro、TypeScript、性能优化和部署流程中的实战经验。</p>
+			</div>
+			<div class="card-surface info-card">
+				<h3>写作方法</h3>
+				<p>关注选题、节奏、草稿整理与从零散想法沉淀为长期资产的过程。</p>
+			</div>
+		</div>
+	</section>
+</MainLayout>

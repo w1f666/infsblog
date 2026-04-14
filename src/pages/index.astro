@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from '../components/ArticleCard.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+	FEATURED_TOPICS,
+	HOME_HIGHLIGHTS,
+	SITE_AUTHOR,
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+} from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const featuredPost = posts.find((post) => post.data.featured) ?? posts[0];
+const latestPosts = posts.slice(0, 3);
+---
+
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION} pageClass="home-page">
+	<section class="hero-grid">
+		<div class="hero-copy card-surface hero-panel">
+			<p class="eyebrow">长期主义博客模板</p>
+			<h1>把内容站先做扎实，再决定要不要加更重的前端交互。</h1>
+			<p class="hero-text">
+				这是一个已经从 Astro 默认 starter 整理过的中文博客首页，适合直接开始写作、展示项目思考和持续更新。
+			</p>
+			<div class="hero-actions">
+				<a class="button button-primary" href="/blog">查看全部文章</a>
+				<a class="button button-secondary" href="/about">了解作者与站点</a>
+			</div>
+			<ul class="hero-stats" aria-label="站点信息">
+				<li>
+					<strong>{posts.length}</strong>
+					<span>篇已发布文章</span>
+				</li>
+				<li>
+					<strong>RSS</strong>
+					<span>可订阅更新</span>
+				</li>
+				<li>
+					<strong>{SITE_AUTHOR}</strong>
+					<span>持续维护中</span>
+				</li>
+			</ul>
+		</div>
+		<div class="hero-aside stack-lg">
+			<div class="card-surface tone-accent">
+				<p class="eyebrow">写作主题</p>
+				<ul class="topic-list">
+					{FEATURED_TOPICS.map((topic) => <li>{topic}</li>)}
+				</ul>
+			</div>
+			<div class="card-surface tone-warm">
+				<p class="eyebrow">站点说明</p>
+				<p class="compact-text">
+					当前版本专注静态内容呈现，没有引入多余的前端运行时；如果后续增加搜索、筛选或评论区等复杂交互，再接 React 会更合适。
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-block">
+		<div class="section-head">
+			<div>
+				<p class="eyebrow">最新内容</p>
+				<h2>优先阅读</h2>
+			</div>
+			<a class="section-link" href="/blog">进入文章列表</a>
+		</div>
+		{featuredPost && <ArticleCard post={featuredPost} variant="feature" />}
+	</section>
+
+	<section class="section-block">
+		<div class="section-head">
+			<div>
+				<p class="eyebrow">最近发布</p>
+				<h2>保持稳定更新</h2>
+			</div>
+		</div>
+		<div class="grid-3">
+			{latestPosts.map((post) => <ArticleCard post={post} />)}
+		</div>
+	</section>
+
+	<section class="section-block">
+		<div class="section-head">
+			<div>
+				<p class="eyebrow">搭建原则</p>
+				<h2>这个版本解决了什么</h2>
+			</div>
+		</div>
+		<div class="grid-3">
+			{HOME_HIGHLIGHTS.map((item) => (
+				<div class="card-surface info-card">
+					<h3>{item.title}</h3>
+					<p>{item.description}</p>
+				</div>
+			))}
+		</div>
+	</section>
+</MainLayout>

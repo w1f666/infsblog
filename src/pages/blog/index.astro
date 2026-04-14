@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from '../../components/ArticleCard.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const featuredPost = posts.find((post) => post.data.featured) ?? posts[0];
+const remainingPosts = posts.filter((post) => post.id !== featuredPost?.id);
+---
+
+<MainLayout title={`文章 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} pageClass="blog-index-page">
+	<section class="section-block compact-top">
+		<div class="section-head">
+			<div>
+				<p class="eyebrow">全部文章</p>
+				<h1>文章归档</h1>
+				<p class="section-intro">当前共 {posts.length} 篇内容，按发布时间倒序排列，适合直接作为博客首页后的内容中心。</p>
+			</div>
+		</div>
+		{featuredPost && <ArticleCard post={featuredPost} variant="feature" />}
+	</section>
+
+	<section class="section-block compact-top">
+		<div class="grid-2">
+			{remainingPosts.map((post) => <ArticleCard post={post} />)}
+		</div>
+	</section>
+</MainLayout>

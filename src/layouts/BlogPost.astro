@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import MainLayout from './MainLayout.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
+---
+
+<MainLayout title={title} description={description} pageClass="article-page">
+	<article class="article-shell">
+		<a class="back-link" href="/blog">返回文章列表</a>
+		<div class="article-header card-surface">
+			<div class="article-meta">
+				<span><FormattedDate date={pubDate} /></span>
+				{updatedDate && (
+					<span class="article-update">更新于 <FormattedDate date={updatedDate} /></span>
+				)}
+			</div>
+			<h1>{title}</h1>
+			<p class="article-description">{description}</p>
+			{tags.length > 0 && (
+				<ul class="article-tags" aria-label="文章标签">
+					{tags.map((tag) => <li>{tag}</li>)}
+				</ul>
+			)}
+		</div>
+		{heroImage && (
+			<div class="article-hero">
+				<Image width={1280} height={720} src={heroImage} alt="" />
+			</div>
+		)}
+		<div class="prose card-surface">
+			<slot />
+		</div>
+	</article>
+</MainLayout>
