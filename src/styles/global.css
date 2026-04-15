@@ -39,7 +39,7 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: var(--ink);
-	font-size: 16px;
+	font-size: 15px;
 	line-height: 1.72;
 }
 
@@ -73,15 +73,15 @@ h6 {
 }
 
 h1 {
-	font-size: clamp(1.95rem, 4vw, 3.45rem);
+	font-size: clamp(1.8rem, 3.6vw, 3.1rem);
 }
 
 h2 {
-	font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+	font-size: clamp(1.32rem, 2.2vw, 1.95rem);
 }
 
 h3 {
-	font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+	font-size: clamp(0.98rem, 1.2vw, 1.18rem);
 }
 
 strong,
@@ -244,7 +244,7 @@ li + li {
 
 .eyebrow {
 	margin-bottom: 12px;
-	font-size: 0.78rem;
+	font-size: 0.72rem;
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
@@ -254,7 +254,7 @@ li + li {
 .hero-text,
 .section-intro,
 .compact-text {
-	font-size: 0.94rem;
+	font-size: 0.9rem;
 	color: var(--ink-soft);
 }
 
@@ -274,7 +274,7 @@ li + li {
 	border: 1px solid rgba(30, 41, 59, 0.08);
 	text-decoration: none;
 	color: var(--ink-soft);
-	font-size: 0.9rem;
+	font-size: 0.86rem;
 }
 
 .contact-list a:hover {
@@ -298,6 +298,7 @@ li + li {
 	border-radius: 999px;
 	text-decoration: none;
 	font-weight: 700;
+	font-size: 0.92rem;
 	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease,
 		color 180ms ease;
 }
@@ -373,7 +374,7 @@ li + li {
 }
 
 .hero-stats span {
-	font-size: 0.9rem;
+	font-size: 0.84rem;
 	color: var(--muted);
 }
 
@@ -395,7 +396,7 @@ li + li {
 	border-radius: 999px;
 	background: var(--accent-soft);
 	color: var(--accent-strong);
-	font-size: 0.86rem;
+	font-size: 0.8rem;
 	font-weight: 700;
 	line-height: 1;
 	white-space: nowrap;
@@ -441,7 +442,7 @@ li + li {
 	border-radius: 999px;
 	text-decoration: none;
 	font-weight: 600;
-	font-size: 0.92rem;
+	font-size: 0.86rem;
 }
 
 .tag-grid {
@@ -460,12 +461,12 @@ li + li {
 }
 
 .tag-card strong {
-	font-size: 1.02rem;
+	font-size: 0.96rem;
 	color: var(--ink);
 }
 
 .tag-card span {
-	font-size: 0.9rem;
+	font-size: 0.84rem;
 	color: var(--muted);
 }
 
@@ -511,13 +512,13 @@ li + li {
 	flex-wrap: wrap;
 	gap: 10px;
 	align-items: center;
-	font-size: 0.88rem;
+	font-size: 0.82rem;
 	color: var(--muted);
 }
 
 .post-body h3 {
 	margin-top: 12px;
-	font-size: clamp(1.08rem, 1.45vw, 1.4rem);
+	font-size: clamp(1rem, 1.25vw, 1.24rem);
 }
 
 .post-body p {
@@ -538,7 +539,7 @@ li + li {
 	display: inline-flex;
 	align-items: center;
 	margin-top: 18px;
-	font-size: 0.9rem;
+	font-size: 0.84rem;
 	font-weight: 700;
 	color: var(--accent-strong);
 	transition: transform 180ms ease, color 180ms ease;
@@ -567,20 +568,20 @@ li + li {
 }
 
 .article-header h1 {
-	font-size: clamp(1.8rem, 3.8vw, 2.85rem);
+	font-size: clamp(1.65rem, 3.2vw, 2.5rem);
 	margin-top: 16px;
 }
 
 .article-description {
 	margin-top: 16px;
-	font-size: 0.95rem;
+	font-size: 0.9rem;
 }
 
 .prose {
 	width: min(var(--reading-width), 100%);
 	margin: 20px auto 0;
 	padding: 32px;
-	font-size: 0.96rem;
+	font-size: 0.9rem;
 }
 
 .prose > :first-child {
@@ -677,7 +678,7 @@ button:focus-visible {
 
 @media (max-width: 720px) {
 	body {
-		font-size: 16px;
+		font-size: 15px;
 	}
 	main {
 		width: min(var(--content-width), calc(100% - 20px));
@@ -696,12 +697,12 @@ button:focus-visible {
 		border-radius: 24px;
 	}
 	h1 {
-		font-size: clamp(1.8rem, 8vw, 2.35rem);
+		font-size: clamp(1.65rem, 7vw, 2.1rem);
 	}
 	h2 {
-		font-size: clamp(1.32rem, 5vw, 1.72rem);
+		font-size: clamp(1.2rem, 4.5vw, 1.55rem);
 	}
 	.article-header h1 {
-		font-size: clamp(1.62rem, 7vw, 2.1rem);
+		font-size: clamp(1.48rem, 6.2vw, 1.9rem);
 	}
 }
