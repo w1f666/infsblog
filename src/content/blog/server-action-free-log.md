@@ -1,8 +1,8 @@
 ---
-title: 'nextjs高版本server action杂谈'
+title: 'nextjs高版本开发趋势杂谈'
 description: '如题'
 pubDate: 'Apr 14 2026'
-tags: ['Nextjs', '写作', '内容工作流']
+tags: ['Nextjs', '全栈开发', '服务端']
 featured: false
 ---
 
