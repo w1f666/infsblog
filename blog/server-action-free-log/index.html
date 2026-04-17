@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4efe7"><meta http-equiv="content-language" content="zh-CN"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="inf's blog" href="https://w1f666.github.io/rss.xml"><meta name="generator" content="Astro v6.1.5"><style>@font-face{font-family:Atkinson-c7f4c4e8b285552f;src:url("/infsblog/_astro/fonts/9f61ebadbc9da4f0.woff") format("woff");font-display:swap;font-weight:400;font-style:normal;}@font-face{font-family:Atkinson-c7f4c4e8b285552f;src:url("/infsblog/_astro/fonts/f7d8259a449ccf17.woff") format("woff");font-display:swap;font-weight:700;font-style:normal;}@font-face{font-family:"Atkinson-c7f4c4e8b285552f fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.3717%;ascent-override:80.1033%;descent-override:25.2587%;line-gap-override:0%;}@font-face{font-family:"Atkinson-c7f4c4e8b285552f fallback: Arial";src:local("Arial");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.3717%;ascent-override:80.1033%;descent-override:25.2587%;line-gap-override:0%;}:root{--font-atkinson:Atkinson-c7f4c4e8b285552f,"Atkinson-c7f4c4e8b285552f fallback: Arial",sans-serif;}</style><link rel="preload" href="/infsblog/_astro/fonts/9f61ebadbc9da4f0.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/infsblog/_astro/fonts/f7d8259a449ccf17.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://w1f666.github.io/infsblog/blog/server-action-free-log/"><!-- Primary Meta Tags --><title>nextjs高版本开发趋势杂谈 | inf&#39;s blog</title><meta name="title" content="nextjs高版本开发趋势杂谈 | inf's blog"><meta name="description" content="如题"><meta name="keywords" content="独立博客, 前端, 设计, 产品思考, 阅读笔记, 写作"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://w1f666.github.io/infsblog/blog/server-action-free-log/"><meta property="og:title" content="nextjs高版本开发趋势杂谈 | inf's blog"><meta property="og:site_name" content="inf's blog"><meta property="og:locale" content="zh-CN"><meta property="og:description" content="如题"><meta property="og:image" content="https://w1f666.github.io/infsblog/_astro/blog-placeholder-1.Bx0Zcyzv.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://w1f666.github.io/infsblog/blog/server-action-free-log/"><meta property="twitter:title" content="nextjs高版本开发趋势杂谈 | inf's blog"><meta property="twitter:description" content="如题"><meta property="twitter:image" content="https://w1f666.github.io/infsblog/_astro/blog-placeholder-1.Bx0Zcyzv.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"inf's blog","description":"如题","inLanguage":"zh-CN","url":"https://w1f666.github.io/"}</script><link rel="stylesheet" href="/infsblog/_astro/MainLayout.D9Y29_Th.css"></head> <body> <div class="site-shell"> <header data-astro-cid-3ef6ksr2> <div class="nav-shell" data-astro-cid-3ef6ksr2> <a class="brand" href="/" data-astro-cid-3ef6ksr2> <strong data-astro-cid-3ef6ksr2>inf&#39;s blog</strong> </a> <nav aria-label="主导航" data-astro-cid-3ef6ksr2> <div class="internal-links" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> 首页 </a><a href="/blog" class="active" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> 文章 </a><a href="/tags" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> 标签 </a><a href="/about" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> 关于 </a> </div> <a class="feed-link" href="/rss.xml" data-astro-cid-3ef6ksr2>RSS</a> </nav> </div> </header> <main class="page-shell article-page">  <article class="article-shell"> <a class="back-link" href="/blog">返回文章列表</a> <div class="article-header card-surface"> <div class="article-meta"> <span><time datetime="2026-04-14T00:00:00.000Z"> 2026年4月14日 </time></span>  </div> <h1>nextjs高版本开发趋势杂谈</h1> <p class="article-description">如题</p> <ul class="article-tags" aria-label="文章标签"> <li> <a href="/tags/Nextjs/">Nextjs</a> </li><li> <a href="/tags/全栈开发/">全栈开发</a> </li><li> <a href="/tags/服务端/">服务端</a> </li> </ul> </div> <div class="prose card-surface">  <p>1、nextjs中是如何将server action作为函数props传入子组件中的？
+2、在传统的nextjs中，SSR仅有首屏和SEO优势，但是在高版本server action阶段则更加强大
+3、在传统nextjs应用中，我们经常使用如下方法进行安全防御，防止经典的网络请求攻击：
+cookie中的jwt token和cookie中和localstorgae中共有的csfr token（请求时设置在headers中和cookie中的相比较）鉴权
+但是在server action中，这条链路变得不可行了，具体表现为：
+Server Action 并不是传统的 API 路由。
+在传统的 AJAX/Fetch 请求中，你可以在请求头（Headers）里塞入 X-CSRF-Token。但是，Server Action 抽象了底层的网络请求，Next.js 官方并不推荐（也很难优雅地）在触发 Server Action 时自定义 HTTP Headers。</p>
+<p>因此，为了在 Server Action 中实现这个鉴权链路，我们需要把原本放在 Header 中的 CSRF Token，改为作为函数的参数（或 FormData 的一部分）传递。
+4、既然nextjs会自动合并fetch请求，那么为什么还需要useabortcontroller来处理竞态请求比如高频滚动
+这是一个非常深刻的问题，触及到了前端开发中<strong>网络优化</strong>与<strong>状态一致性</strong>的本质区别。</p>
+<p>简单来说：<strong>Next.js 的 <code>fetch</code> 自动合并（Request Memoization）是为了“节省资源”，而 <code>AbortController</code> 解决竞态请求是为了“保证数据的绝对正确”。</strong></p>
+<p>这两者处理的场景和痛点完全不同。我们可以通过以下三个核心差异来彻底理清为什么有了前者，依然需要后者。</p>
+<hr>
+<h3 id="1-触发条件不同相同的请求-vs-不同的请求">1. 触发条件不同：相同的请求 vs 不同的请求</h3>
+<p><strong>Next.js 的自动合并（Deduplication/Memoization）只针对“完全相同”的请求。</strong>
+在 React 树渲染期间，如果遇到 URL 和 options 完全一致的 <code>fetch</code> GET 请求，Next.js（依托 React 的机制）会将其拦截，只发送一次网络请求，并将结果共享给所有调用者。</p>
+<ul>
+<li><strong>适用场景：</strong> 页面顶部导航栏和侧边栏都需要获取 <code>fetch('/api/user')</code>，此时合并能避免重复发包。</li>
+</ul>
+<p><strong>高频滚动（如无限滚动、快速切换过滤条件）往往产生的是“不同”的请求。</strong>
+当用户高频滚动时，你发送的请求通常带有不同的游标或页码，例如：</p>
+<ul>
+<li>请求 A：<code>fetch('/api/data?page=1')</code></li>
+<li>请求 B：<code>fetch('/api/data?page=2')</code></li>
+<li>请求 C：<code>fetch('/api/data?page=3')</code></li>
+</ul>
+<p>因为 URL 参数变了，<strong>Next.js 的缓存和去重机制会直接失效</strong>，它会老老实实地发出这三个独立的请求。</p>
+<h3 id="2-核心痛点不同性能优化-vs-竞态条件-race-conditions">2. 核心痛点不同：性能优化 vs 竞态条件 (Race Conditions)</h3>
+<p>在上述高频滚动的场景中，真正的致命问题不是“发了多少个请求”，而是**“哪个请求先回来”**。</p>
+<p>现实中的网络环境是不稳定的（也就是所谓的<strong>竞态条件</strong>）：</p>
+<ol>
+<li>用户快速滚动，依次触发了 请求 A (<code>page=1</code>)，然后是 请求 B (<code>page=2</code>)。</li>
+<li>请求 B 数据量小或者命中了 CDN 节点，耗时 50ms，先返回了。前端状态更新为<strong>第 2 页的数据</strong>。</li>
+<li>请求 A 遇到了网络波动，耗时 500ms，后返回了。前端状态被覆盖为了<strong>第 1 页的数据</strong>。</li>
+</ol>
+<p><strong>结果：</strong> 用户明明已经滚动到了第 2 页，屏幕上显示的却是第 1 页的数据。UI 状态与用户的预期发生了灾难性的错位。</p>
+<p>Next.js 的 <code>fetch</code> 合并根本不管请求响应的先后顺序。这时候就需要 <strong><code>AbortController</code></strong> 登场。</p>
+<h3 id="3-abortcontroller-的不可替代性主动掐断过时请求">3. AbortController 的不可替代性：主动“掐断”过时请求</h3>
+<p><code>AbortController</code> 的作用是<strong>主动取消（Cancel）</strong> 已经发出但前端不再关心的网络请求。</p>
+<p>在高频滚动的场景中加入 <code>AbortController</code> 的流程是这样的：</p>
+<ol>
+<li>触发 请求 A (<code>page=1</code>)，并绑定 <code>Controller A</code>。</li>
+<li>用户继续滚动，准备触发 请求 B (<code>page=2</code>)。</li>
+<li><strong>关键动作：</strong> 在发出请求 B 之前，调用 <code>Controller A.abort()</code>。</li>
+<li>此时，无论请求 A 走到哪一步（哪怕数据已经到了浏览器门口），它都会被直接丢弃，并且对应的 Promise 会抛出一个 <code>AbortError</code>，不会触发 <code>setState</code>。</li>
+<li>前端永远只会渲染最后一次、最新的请求（请求 B）的结果。</li>
+</ol>
+<hr>
+<h3 id="总结对比">总结对比</h3>
+<p>为了更直观地理解，可以参考以下对比：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">特性</th><th align="left">Next.js Fetch 自动合并</th><th align="left">AbortController (中断控制)</th></tr></thead><tbody><tr><td align="left"><strong>主要目的</strong></td><td align="left">提升性能，减少多余网络开销</td><td align="left">保证 UI 状态正确，防止数据相互覆盖</td></tr><tr><td align="left"><strong>生效前提</strong></td><td align="left">URL 和 Request Options <strong>完全一致</strong></td><td align="left">多次操作触发的请求（URL 相同或不同均可）</td></tr><tr><td align="left"><strong>作用机制</strong></td><td align="left"><strong>被动缓存</strong>：缓存第一个请求的 Promise 供后续复用</td><td align="left"><strong>主动阻断</strong>：在新请求发生时，强行中止旧请求</td></tr><tr><td align="left"><strong>处理目标</strong></td><td align="left">避免“相同的数据查多次”</td><td align="left">避免“旧的数据覆盖新的数据”</td></tr></tbody></table>
+<p>因此，即使你在使用拥有顶级缓存机制的 Next.js，只要涉及客户端的频繁交互（如搜索框防抖/节流后的输入、高频点击 Tab 切换、无限滚动加载），为了防止出现幽灵般的旧数据覆盖新数据现象，<strong><code>AbortController</code> 依然是处理复杂异步 UI 状态的必要武器。</strong></p>  </div> </article>  </main> <footer data-astro-cid-sz7xmlte> <div class="footer-shell" data-astro-cid-sz7xmlte> <div data-astro-cid-sz7xmlte> <p class="footer-title" data-astro-cid-sz7xmlte>inf&#39;s blog</p> <p class="footer-copy" data-astro-cid-sz7xmlte>记录产品观察、界面设计、前端实现与阅读笔记的中文博客。</p> </div> <div class="footer-nav" aria-label="页脚导航" data-astro-cid-sz7xmlte> <a href="/" data-astro-cid-sz7xmlte>首页</a><a href="/blog" data-astro-cid-sz7xmlte>文章</a><a href="/tags" data-astro-cid-sz7xmlte>标签</a><a href="/about" data-astro-cid-sz7xmlte>关于</a> <a href="/rss.xml" data-astro-cid-sz7xmlte>RSS</a> </div> <div class="footer-contact" aria-label="联系方式" data-astro-cid-sz7xmlte> <a href="mailto:wyfinfinity@outlook.com" data-astro-cid-sz7xmlte>wyfinfinity@outlook.com</a> <a href="https://github.com/w1f666" target="_blank" rel="noreferrer" data-astro-cid-sz7xmlte>GitHub / w1f666</a> </div> <p class="footer-meta" data-astro-cid-sz7xmlte>© 2026 Yifan Wang. Built with Astro.</p> </div> </footer> </div> </body></html>
