@@ -6,8 +6,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.SITE_URL ?? 'https://w1f666.github.io',
-	base: '/infsblog',
+	site: 'http://129.211.209.171',
+	base: process.env.GITHUB_ACTIONS ? '/infsblog' : '/',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
